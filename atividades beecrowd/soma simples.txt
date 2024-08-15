@@ -1,5 +1,6 @@
+SUBMISSÃO # 40746157
 #include <stdio.h>
- 
+
 int main() {
 
      int num1 = 0;
@@ -15,3 +16,4 @@ int main() {
     
  
     return 0;
+}

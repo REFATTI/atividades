@@ -1,150 +1,15 @@
-SUBMISSÃO # 40744380
-
-
-
 #include <stdio.h>
  
 int main() {
  
-printf("hello world!\n");
+double x1, x2, y1, y2;
+double distancia;
 
-    return 0;
-}
+scanf("%lf %lf", &x1, &y1);
+scanf("%lf %lf", &x2, &y2);
 
+distancia = ((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 
-SUBMISSÃO # 40745089
-
-#include <stdio.h>
- 
-int main() {
-     int A = 0, B = 0, X = 0;
-     
-     scanf("%d\n%d",&A,&B);
-     X = A+B;
-     printf("X =%d\n",X);
-     
-     
-  
-     
-     
-    return 0;
-}
-SUBMISSÃO # 40745786
-#include <stdio.h>
- 
-int main() {
- double PI = 3.14159; // Valor de PI
-    double raio;         // Variável para armazenar o raio
-    double area;         // Variável para armazenar a área
-
-    // Ler o valor do raio
-    scanf("%lf", &raio);
-
-    // Calcular a área
-    area = PI * (raio * raio);
-
-    // Imprimir a área com 4 casas decimais
-    printf("A=%.4lf\n", area);
- 
- 
-    return 0;
-}
-SUBMISSÃO # 40746157
-#include <stdio.h>
- 
-int main() {
-
-     int num1 = 0;
-     int num2 = 0;
-     int soma = 0;
-     
-     
-     scanf("%d\n%d",&num1, &num2);  
-     soma = num1 + num2;
-     printf("SOMA = %d\n", soma);
-     
-   
-    
- 
-    return 0;
-}
-
-SUBMISSÃO # 40760843
-
-
-#include <stdio.h>
- 
-int main() {
-
-int funcionario = 0;
-int hr_trabalhadas = 0;
-double salario =0.0;
-double valor =0.0;
-
-scanf("%d\n%d\n%lf", &funcionario, &hr_trabalhadas, &valor);
-salario = (hr_trabalhadas * valor);
-printf("NUMBER = %d\n",funcionario);
-printf("SALARY = U$ %.2lf\n",salario);
-
-
-    return 0;
-}
-
-SUBMISSÃO # 40760241
-#include <stdio.h>
- 
-int main() {
- 
-int a = 0, b = 0, c = 0, d = 0;
-int diferenca = 0;
-scanf("%d\n%d\n%d\n%d", &a, &b, &c, &d);
-diferenca = (a*b - c*d);
-printf("DIFERENCA = %d\n", diferenca);
+printf("%.4lf\n", distancia);
 return 0;
-}
-
-SUBMISSÃO # 40759547
-#include <stdio.h>
- 
-int main() {
-    
-double a = 0.0;
-double b = 0.0;
-double c = 0.0;
-double media = 0.0;
-scanf("%lf\n%lf\n%lf", &a, &b, &c);
-media = ((a*2)+(b*3)+(c*5))/10;
-printf("MEDIA = %.1lf\n",media);
- 
-    return 0;
-}
-SUBMISSÃO # 40758417
-#include <stdio.h>
- 
-int main() {
- 
-   double a = 0.0;
-   double b = 0.0;
-   double media = 0.0;
-   
-   scanf("%lf\n%lf", &a, &b);
-   media =((a*3.5)+(b*7.5))/11;
-   
-printf("MEDIA = %.5lf\n",media);
- 
-    return 0;
-}
-#include <stdio.h>
- 
-int main() {
- 
-   int a = 0;
-   int b = 0;
-   int prod = 0;
-   scanf("%d\n%d", &a, &b);
-   prod = a * b;
-   
-   printf("PROD = %d\n", prod);
- 
-    return 0;
 }
