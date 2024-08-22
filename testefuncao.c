@@ -16,7 +16,7 @@ return(0);
 void imprimir()
 
 {
-printf("ola galera\n");
+printf("%d");
 }
 int soma(int a, intb)}
 
