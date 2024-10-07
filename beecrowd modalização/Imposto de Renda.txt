@@ -1,0 +1,42 @@
+SUBMISSÃO # 41865772
+
+#include <stdio.h>
+
+
+float calcularImposto(float salario) {
+    float imposto = 0.0;
+
+    if (salario >= 0.00 && salario <= 2000.00) {
+        return 0.0; // Isento
+    } else if (salario >= 2000.01 && salario <= 3000.00) {
+        salario -= 2000.00;
+        imposto = salario * 0.08;
+    } else if (salario > 3000.01 && salario < 4500.00) {
+        imposto = (salario - 3000.0) * 0.18 + (1000 * 0.08);
+    } else {
+        imposto = (salario - 4500) * 0.28 + (1500 * 0.18) + (1000 * 0.08);
+    }
+    
+    return imposto;
+}
+
+void imprimirResultado(float imposto) {
+    if (imposto == 0.0) {
+        printf("Isento\n");
+    } else {
+        printf("R$ %.2f\n", imposto);
+    }
+}
+
+int main() {
+    float salario;
+
+ 
+    scanf("%f", &salario);
+
+ 
+    float imposto = calcularImposto(salario);
+    imprimirResultado(imposto);
+
+    return 0;
+}
