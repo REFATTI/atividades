@@ -1,0 +1,46 @@
+
+CREATE TABLE disciplina (
+    id_codigo SERIAL PRIMARY KEY,
+    nome VARCHAR(20)
+);
+
+
+CREATE TABLE professor (
+    id_professor SERIAL PRIMARY KEY,
+    telefone_professor VARCHAR(20),
+    cpf_professor BIGINT,
+    nome_professor VARCHAR(20),
+    data_nasc_professor VARCHAR(20),
+    endereco_professor VARCHAR(20)
+);
+
+
+INSERT INTO disciplina (nome) VALUES ('Matemática');
+INSERT INTO disciplina (nome) VALUES ('Física');
+INSERT INTO disciplina (nome) VALUES ('Química');
+INSERT INTO disciplina (nome) VALUES ('Biologia');
+INSERT INTO disciplina (nome) VALUES ('História');
+INSERT INTO disciplina (nome) VALUES ('Geografia');
+INSERT INTO disciplina (nome) VALUES ('Inglês');
+INSERT INTO disciplina (nome) VALUES ('Educação Física');
+INSERT INTO disciplina (nome) VALUES ('Filosofia');
+INSERT INTO disciplina (nome) VALUES ('Sociologia');
+
+
+SELECT * FROM disciplina ORDER BY id_codigo;
+
+
+INSERT INTO professor (telefone_professor, cpf_professor, nome_professor, data_nasc_professor, endereco_professor)
+VALUES 
+    ('999999999', 7788798, 'Ana', '53-455', 'Rua B, 100'),
+    ('999999999', 8384862, 'Carlos', '52.45.2222', 'Rua C, 250'),
+    ('999999999', 9989923, 'Beatriz', '874723', 'Rua D, 300'),
+    ('999999999', 8973789, 'Roberto', '243242', 'Rua E, 450'),
+    ('999999999', 8378783, 'Juliana', '234234', 'Rua F, 500'),
+    ('999999999', 1431413, 'Marcos', '234234', 'Rua G, 1234'),
+    ('999999999', 9187373, 'Fernanda', '453523', 'Rua H, 567'),
+    ('999999999', 8977382, 'José', '77462745', 'Rua I, 890'),
+    ('999999999', 0988773, 'Luiza', '094883', 'Rua J, 135'),
+    ('999999999', 7478489, 'Ricardo', '384732', 'Rua K, 246');
+
+SELECT * FROM professor ORDER BY id_professor;
