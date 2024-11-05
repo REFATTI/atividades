@@ -1,11 +1,12 @@
-SUBMISSÃO # 41506012
+
 
 
 #include <stdio.h>
 
 int main()
-{
-int numero; 
+
+printf("numero");
+int numero;
 
 for (numero = 1; numero <= 101; numero++){
     if (numero % 2 == 0) {
