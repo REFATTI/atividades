@@ -1,0 +1,158 @@
+CREATE TABLE clientes (
+ id_clientes serial PRIMARY KEY,
+ nome VARCHAR(20),
+ cpf BIGINT,
+ data_naci INT,
+ estado VARCHAR(20),
+ cidade VARCHAR(20),
+ rua VARCHAR(20),
+ numero INT,
+ cep VARCHAR(20)
+
+);
+INSERT INTO clientes(nome, cpf,data_naci, estado,cidade,rua,numero,cep) VALUES
+('gabriel refatti',99999999, 7890-09-09,'sao paulo','dois vizinhos','das palmeira',23,'SP')
+ 
+INSERT INTO clientes(nome, cpf,data_naci, estado,cidade,rua,numero,cep) VALUES
+('vagner',35345343, 1233-34-45,'parana','dois olhos ','das aparecida',14,'pr')
+
+INSERT INTO clientes(nome, cpf,data_naci, estado,cidade,rua,numero,cep) VALUES
+('kevin',53543454, 7890-09-09,'rio grande','doas aguas','rua vinhedo',43,'rg')
+
+INSERT INTO clientes(nome, cpf,data_naci, estado,cidade,rua,numero,cep) VALUES
+('lucia',5434534534, 7890-09-09,'ceara','maringa','rio grande',53,'ce')
+
+INSERT INTO clientes(nome, cpf,data_naci, estado,cidade,rua,numero,cep) VALUES
+('arthur',678488345, 7890-09-09,'mato grosso','barlandia','jose',45,'SP')
+
+CREATE TABLE pedidos (
+id_pedido serial PRIMARY KEY,
+data_criacao INT,
+status VARCHAR(20),
+cliente_idfk INT,
+FOREIGN KEY (cliente_idfk) REFERENCES clientes(id_clientes)
+);
+select * from pedidos;
+
+INSERT INTO pedidos(data_criacao,status,cliente_idfk) VALUES 
+(8776-98-87,'ENVIDO',1)
+
+INSERT INTO pedidos(data_criacao,status,cliente_idfk) VALUES 
+(4567-78-87,'ENVIDO',2)
+
+INSERT INTO pedidos(data_criacao,status,cliente_idfk) VALUES 
+(8776-98-87,'ENVIDO',3)
+
+INSERT INTO pedidos(data_criacao,status,cliente_idfk) VALUES 
+(8776-98-87,'ENVIDO',4)
+
+INSERT INTO pedidos(data_criacao,status,cliente_idfk) VALUES 
+(8776-98-87,'ENVIDO',5)
+INSERT INTO pedidos(data_criacao,status) VALUES 
+(2024-11-26,'empresa')
+
+
+CREATE TABLE produtos (
+id_proutos serial PRIMARY KEY,
+nome VARCHAR(20),
+descricao VARCHAR(20),
+preco_unitario bigint,
+quantidade_estoque bigint,
+fornecedor_idfk INT,
+FOREIGN KEY (fornecedor_idfk) REFERENCES fornecedor(id_fornecedor)
+
+);
+INSERT INTO produtos(nome,descricao,preco_unitario,quantidade_estoque,fornecedor_idfk) VALUES 
+('boblia','bom de ler',23.33,32,1)
+
+INSERT INTO produtos(nome,descricao,preco_unitario,quantidade_estoque,fornecedor_idfk) VALUES 
+('trator','bom ',100.00,32,2)
+
+INSERT INTO produtos(nome,descricao,preco_unitario,quantidade_estoque,fornecedor_idfk) VALUES 
+('moto','bom ',12.32,32,3)
+
+
+INSERT INTO produtos(nome,descricao,preco_unitario,quantidade_estoque,fornecedor_idfk) VALUES 
+('laço','bom ',23,32,4)
+
+INSERT INTO produtos(nome,descricao,preco_unitario,quantidade_estoque,fornecedor_idfk) VALUES 
+('ar','bom',33,32,5)
+select * from produtos;
+
+
+CREATE TABLE fornecedor (
+ id_fornecedor serial PRIMARY KEY,
+ nome VARCHAR(20),
+ cnpj bigint,
+ telefone bigint,
+ rua VARCHAR(20),
+ numero bigint,
+ estado VARCHAR(20),
+ cep VARCHAR(20),
+ cidade VARCHAR(20)
+);
+INSERT INTO fornecedor(nome,cnpj,telefone,rua,numero,estado,cep,cidade) VALUES
+('BIBLIA',1234,233344532,'rio grande',34,'sao paulo','SP','maragogi')
+
+
+INSERT INTO fornecedor(nome,cnpj,telefone,rua,numero,estado,cep,cidade) VALUES
+('motor',1234,233344532,'rio ',34,'sao paulo','SP','maragogi')
+
+
+INSERT INTO fornecedor(nome,cnpj,telefone,rua,numero,estado,cep,cidade) VALUES
+('carro',1234,233344532,'grande',34,'sao paulo','SP','maragogi')
+
+
+INSERT INTO fornecedor(nome,cnpj,telefone,rua,numero,estado,cep,cidade) VALUES
+('celular',1234,233344532,'mateladia',34,'sao paulo','SP','maragogi')
+
+INSERT INTO fornecedor(nome,cnpj,telefone,rua,numero,estado,cep,cidade) VALUES
+('moto',1234,233344532,'rio pequeno',34,'sao paulo','SP','maragogi')
+
+
+CREATE TABLE itens_pedidos (
+  id_itens_pedidos serial PRIMARY KEY,
+  quantidade_compra BIGINT,
+  valor_total bigint,
+  pedidos_idfk INT,
+  produtos_idfk INT,
+  FOREIGN KEY (pedidos_idfk) REFERENCES pedidos(id_pedido),
+  FOREIGN KEY (produtos_idfk) REFERENCES produtos(id_proutos)
+);
+
+INSERT INTO itens_pedidos(quantidade_compra,valor_total,pedidos_idfk,produtos_idfk) VALUES
+(1,23.43,1,2)
+INSERT INTO itens_pedidos(quantidade_compra,valor_total,pedidos_idfk,produtos_idfk) VALUES
+(13,43,2,3)
+INSERT INTO itens_pedidos(quantidade_compra,valor_total,pedidos_idfk,produtos_idfk) VALUES
+(24,50000,3,4)
+
+INSERT INTO itens_pedidos(quantidade_compra,valor_total,pedidos_idfk,produtos_idfk) VALUES
+(28,1000,4,5)
+
+INSERT INTO itens_pedidos(quantidade_compra,valor_total,pedidos_idfk,produtos_idfk) VALUES
+(49,100.83,5,6)
+
+SELECT *FROM itens_pedidos;
+
+
+
+SELECT MAX(pedidos.id_pedido) FROM pedidos
+INNER JOIN clientes ON  clientes.id_clientes=pedidos.cliente_idfk
+
+
+SELECT produtos.nome,fornecedor.nome FROM produtos
+inner join fornecedor on produtos.fornecedor_idfk = fornecedor.id_fornecedor;
+
+select  max(preco_unitario) from produtos;
+
+select pedidos.id_pedido,itens_pedidos.valor_total from pedidos
+left join itens_pedidos on pedidos.id_pedido=itens_pedidos.pedidos_idfk
+
+select itens_pedidos.valor_total,clientes.nome from itens_pedidos
+inner join pedidos on itens_pedidos.pedidos_idfk = pedidos.id_pedido 
+inner join clientes on clientes.id_clientes = pedidos.cliente_idfk
+
+
+select itens_pedidos.quantidade_compra,produtos.nome from itens_pedidos
+inner join produtos on itens_pedidos.produtos_idfk = produtos.id_proutos
